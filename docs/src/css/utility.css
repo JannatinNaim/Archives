@@ -1,0 +1,30 @@
+/* Make fonts bold. */
+.bold {
+    font-weight: bold;
+}
+
+/* Make fonts italic. */
+.italics {
+    font-style: italic;
+}
+
+/* Call to action button. */
+.call-to-action {
+    /* Default width. */
+    width: 250px;
+    height: 50px;
+
+    /* Center test. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    /* UPPERCASE fonts with bold face. */
+    color: white;
+    text-transform: uppercase;
+    font-weight: bold;
+
+    /* Vermilion Red background with rounded borders. */
+    background-color: #d9381e;
+    border-radius: 5px;
+}
