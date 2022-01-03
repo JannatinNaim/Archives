@@ -19,6 +19,7 @@
 /* About section paragraph width. */
 .about p {
     width: 40%;
+    line-height: 1.8;
 }
 
 /*

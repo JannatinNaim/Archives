@@ -94,4 +94,8 @@ img {
         /* Switch to column mode on small screens. */
         flex-direction: column;
     }
+
+    #branding {
+        margin-bottom: 2rem;
+    }
 }
