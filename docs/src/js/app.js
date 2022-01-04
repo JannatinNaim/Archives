@@ -1,7 +1,7 @@
 // * Channel Names e.g ['jannatinnaim', 'twitch']
 const channels = ['jannatinnaim'];
 // * Notification Sound e.g './notification.mp3' / 'sound.mp3'
-const notification = './notification.mp3';
+const notification = '../src/audio/notification.mp3';
 
 /*
     ! DO NOT MODIFY THE CODE BELOW!
