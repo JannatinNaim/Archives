@@ -34,6 +34,52 @@
         <title>Chat Alerts</title>
     </head>
     <body>
+        <div class="container">
+            <!-- * MAIN HEADER | START -->
+            <header id="main-header">
+                <!-- * PAGE BRANDING | START -->
+                <div id="branding">
+                    <img src="../src/images/profile.png" alt="Profile Picture" />
+
+                    <h1><a href="#">Chat Alerts</a></h1>
+                </div>
+                <!-- * PAGE BRANDING | END -->
+
+                <!-- * MAIN NAVBAR | START -->
+                <nav id="main-navbar">
+                    <ul>
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">About</a></li>
+                        <li><a href="#">Guide</a></li>
+                        <li><a href="#">GitHub</a></li>
+                        <li><a href="#">More</a></li>
+                    </ul>
+                </nav>
+                <!-- * MAIN NAVBAR | END -->
+            </header>
+            <!-- * PAGE HEADER | END -->
+
+            <div class="input-fields">
+                <section>
+                    <h1>Channels To Listen To</h1>
+
+                    <input type="text" name="channel" id="channel_name_input" />
+                    <button id="add_channel_button">Add Channel</button>
+                </section>
+
+                <section>
+                    <h1>Notification Sound</h1>
+
+                    <input type="text" name="channel" id="channel_name_input" />
+                    <button id="add_channel_button">Add Sound</button>
+                </section>
+            </div>
+
+            <div class="channel-lists">
+                <ul id="channels_list"></ul>
+            </div>
+        </div>
+
         <!-- * TMI -->
         <script src="../src/js/tmi.js"></script>
         <!-- * APP -->
