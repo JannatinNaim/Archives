@@ -27,4 +27,5 @@
     /* Vermilion Red background with rounded borders. */
     background-color: #d9381e;
     border-radius: 5px;
+    border: none;
 }

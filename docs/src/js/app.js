@@ -35,7 +35,7 @@ addChannelButton.addEventListener('click', async (event) => addChannels());
 /*
  * Add channels to the channels list and TMI client.
  */
-const addChannels = () => {
+const addChannels = async () => {
     // Stop if input value of channel name is empty.
     if (channelNameInput.value === '') return;
 

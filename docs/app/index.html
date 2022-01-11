@@ -41,14 +41,14 @@
                 <div id="branding">
                     <img src="../src/images/profile.png" alt="Profile Picture" />
 
-                    <h1><a href="#">Chat Alerts</a></h1>
+                    <h1><a href="../index.html">Chat Alerts</a></h1>
                 </div>
                 <!-- * PAGE BRANDING | END -->
 
                 <!-- * MAIN NAVBAR | START -->
                 <nav id="main-navbar">
                     <ul>
-                        <li><a href="#">Home</a></li>
+                        <li><a href="../index.html">Home</a></li>
                         <li><a href="#">About</a></li>
                         <li><a href="#">Guide</a></li>
                         <li><a href="#">GitHub</a></li>
@@ -59,24 +59,28 @@
             </header>
             <!-- * PAGE HEADER | END -->
 
-            <div class="input-fields">
-                <section>
-                    <h1>Channels To Listen To</h1>
+            <div class="main">
+                <div class="input-fields">
+                    <section class="channel_inputs">
+                        <h1>Channels To Listen To</h1>
 
-                    <input type="text" name="channel" id="channel_name_input" />
-                    <button id="add_channel_button">Add Channel</button>
-                </section>
+                        <input type="text" name="channel" id="channel_name_input" />
+                        <button id="add_channel_button" type="submit" class="call-to-action">Add Channel</button>
+                    </section>
 
-                <section>
+                    <!-- TODO: ADD ABILITY TO SELECT CUSTOM NOTIFICATION SOUND -->
+                    <!-- <section>
                     <h1>Notification Sound</h1>
 
                     <input type="text" name="channel" id="channel_name_input" />
                     <button id="add_channel_button">Add Sound</button>
-                </section>
-            </div>
+                </section> -->
+                </div>
 
-            <div class="channel-lists">
-                <ul id="channels_list"></ul>
+                <div class="channel-lists">
+                    <h1>Channels</h1>
+                    <ul id="channels_list"></ul>
+                </div>
             </div>
         </div>
 

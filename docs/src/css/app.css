@@ -1,0 +1,69 @@
+/* * MAIN */
+/* Flex elements with half of the screen width. */
+.main {
+    display: flex;
+    justify-content: space-between;
+}
+
+/* * INPUT FIELDS */
+/* Add bottom margins to input fields and set width. */
+.input-fields {
+    margin-bottom: 2rem;
+    width: 40%;
+}
+
+/* Style channel name input field. */
+#channel_name_input {
+    margin: 1rem 0;
+    width: 300px;
+    height: 36px;
+    border-radius: 1rem;
+    padding: 8px;
+    width: 100%;
+}
+
+/* Set width to 100%. */
+#add_channel_button {
+    width: 100%;
+}
+
+/* Change border on focus. */
+#channel_name_input:focus {
+    outline: none;
+    border: 2px solid #d9381e;
+}
+
+/* * CHANNEL LIST */
+/* Set width for channels list. */
+.channel-lists {
+    width: 40%;
+}
+/* Change channel list title size and add margin. */
+.channel-lists h1 {
+    font-size: 24px;
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+/* Style channel lists. */
+#channels_list {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background: #ccc;
+    padding: 1rem;
+    border-radius: 5px;
+}
+
+/* Style individual channel name items. */
+#channels_list li {
+    background: grey;
+    margin-bottom: 1rem;
+    padding: 1rem;
+    border-radius: 5px;
+    color: white;
+    display: block;
+    width: 100%;
+    text-align: center;
+}
