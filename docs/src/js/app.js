@@ -22,6 +22,12 @@ tmiClient.on('message', () => {
 // Connect TMI client.
 tmiClient.connect();
 
+const channelInputForm = document.getElementById('channel_input_form');
+channelInputForm.addEventListener('submit', (event) => {
+    event.preventDefault();
+    addChannels();
+});
+
 // Input field for channel names.
 const channelNameInput = document.getElementById('channel_name_input');
 // Button to add channel names.
@@ -29,8 +35,18 @@ const addChannelButton = document.getElementById('add_channel_button');
 // List of channels listening to.
 const channelsList = document.getElementById('channels_list');
 
-// Wait for click on 'Add Channel' button.
-addChannelButton.addEventListener('click', async (event) => addChannels());
+const removeChannel = async (channelName, channelNameContainer, channelsList) => {
+    // Iterate through all channels listening to and add them to TMI.
+    const tmiChannels = tmiClient.channels;
+    // If TMI already has the channel, skip iteration.
+    tmiChannels.splice(tmiChannels.indexOf(channelName, 1));
+
+    channelsList.removeChild(channelNameContainer);
+
+    // Disconnect and reconnect to TMI to refresh listening channels.
+    await tmiClient.disconnect();
+    await tmiClient.connect();
+};
 
 /*
  * Add channels to the channels list and TMI client.
@@ -39,20 +55,30 @@ const addChannels = async () => {
     // Stop if input value of channel name is empty.
     if (channelNameInput.value === '') return;
 
-    // Create a new li with the name of the channel.
-    const newChannelElement = document.createElement('li');
-    newChannelElement.innerText = channelNameInput.value;
+    const channelNameContainer = document.createElement('li');
+    const channelNameContainerText = document.createElement('span');
+    const channelNameContainerButton = document.createElement('button');
 
-    // Stop if channel name already exists on the list.
+    const channelName = channelNameInput.value;
+    channelNameContainerText.innerText = channelName;
+    channelNameContainerText.classList.add('channel_name_text');
+    channelNameContainerButton.innerText = '❌';
+    channelNameContainerButton.classList.add('channel_name_button');
+
+    channelNameContainerButton.addEventListener('click', () =>
+        removeChannel(channelName, channelNameContainer, channelsList)
+    );
+
+    channelNameContainer.appendChild(channelNameContainerText);
+    channelNameContainer.appendChild(channelNameContainerButton);
+
     for (let i = 0; i < channelsList.children.length; i++) {
         const item = channelsList.children[i];
-        if (item.innerText === newChannelElement.innerText) return;
+        if (item.innerText === channelNameContainerText.innerText) return;
     }
 
-    // Add the new channel to the list of listening channels.
-    channelsList.appendChild(newChannelElement);
-    // Clear the channel name input field.
     channelNameInput.value = '';
+    channelsList.appendChild(channelNameContainer);
 
     // Iterate through all channels listening to and add them to TMI.
     for (let i = 0; i < channelsList.children.length; i++) {

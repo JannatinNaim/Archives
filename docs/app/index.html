@@ -64,8 +64,10 @@
                     <section class="channel_inputs">
                         <h1>Channels To Listen To</h1>
 
-                        <input type="text" name="channel" id="channel_name_input" />
-                        <button id="add_channel_button" type="submit" class="call-to-action">Add Channel</button>
+                        <form id="channel_input_form">
+                            <input autocomplete="off" autofocus type="text" name="channel" id="channel_name_input" />
+                            <button id="add_channel_button" type="submit" class="call-to-action">Add Channel</button>
+                        </form>
                     </section>
 
                     <!-- TODO: ADD ABILITY TO SELECT CUSTOM NOTIFICATION SOUND -->
