@@ -20,7 +20,7 @@ tmiClient.on('message', () => {
 });
 
 // Connect TMI client.
-tmiClient.connect();
+tmiClient.connect().then(() => retrieveChannels());
 
 const channelInputForm = document.getElementById('channel_input_form');
 channelInputForm.addEventListener('submit', (event) => {
@@ -48,6 +48,59 @@ const removeChannel = async (channelName, channelNameContainer, channelsList) =>
     await tmiClient.connect();
 };
 
+const retrieveChannels = async () => {
+    const channels = JSON.parse(window.localStorage.getItem('channels'));
+
+    for (let i = 0; i < channels.length; i++) {
+        const channelName = channels[i];
+
+        const channelNameContainer = document.createElement('li');
+        const channelNameContainerText = document.createElement('span');
+        const channelNameContainerButton = document.createElement('button');
+        const channelNameContainerButtonIcon = document.createElement('span');
+
+        channelNameContainerText.innerText = channelName;
+        channelNameContainerText.classList.add('channel_name_text');
+        channelNameContainerButtonIcon.classList.add('iconify');
+        channelNameContainerButtonIcon.dataset.icon = 'emojione-monotone:cross-mark-button';
+        channelNameContainerButton.appendChild(channelNameContainerButtonIcon);
+        channelNameContainerButton.classList.add('channel_name_button');
+
+        channelNameContainerButton.addEventListener('click', () =>
+            removeChannel(channelName, channelNameContainer, channelsList)
+        );
+
+        channelNameContainer.appendChild(channelNameContainerText);
+        channelNameContainer.appendChild(channelNameContainerButton);
+
+        for (let i = 0; i < channelsList.children.length; i++) {
+            const item = channelsList.children[i];
+            if (item.innerText === channelNameContainerText.innerText) return;
+        }
+
+        channelNameInput.value = '';
+        channelsList.appendChild(channelNameContainer);
+
+        // Iterate through all channels listening to and add them to TMI.
+        for (let i = 0; i < channelsList.children.length; i++) {
+            // One of the channels from channel list.
+            const channel = channelsList.children[i].innerText;
+            // TMI channels.
+            const tmiChannels = tmiClient.channels;
+            // If TMI already has the channel, skip iteration.
+            if (tmiChannels.includes(channel)) continue;
+            // Add channel to TMI.
+            tmiChannels.push(channel);
+        }
+
+        addChannelsToLocalStorage();
+
+        // Disconnect and reconnect to TMI to refresh listening channels.
+        await tmiClient.disconnect();
+        await tmiClient.connect();
+    }
+};
+
 /*
  * Add channels to the channels list and TMI client.
  */
@@ -58,11 +111,14 @@ const addChannels = async () => {
     const channelNameContainer = document.createElement('li');
     const channelNameContainerText = document.createElement('span');
     const channelNameContainerButton = document.createElement('button');
+    const channelNameContainerButtonIcon = document.createElement('span');
 
     const channelName = channelNameInput.value;
     channelNameContainerText.innerText = channelName;
     channelNameContainerText.classList.add('channel_name_text');
-    channelNameContainerButton.innerText = '❌';
+    channelNameContainerButtonIcon.classList.add('iconify');
+    channelNameContainerButtonIcon.dataset.icon = 'emojione-monotone:cross-mark-button';
+    channelNameContainerButton.appendChild(channelNameContainerButtonIcon);
     channelNameContainerButton.classList.add('channel_name_button');
 
     channelNameContainerButton.addEventListener('click', () =>
@@ -92,7 +148,22 @@ const addChannels = async () => {
         tmiChannels.push(channel);
     }
 
+    addChannelsToLocalStorage();
+
     // Disconnect and reconnect to TMI to refresh listening channels.
     await tmiClient.disconnect();
     await tmiClient.connect();
+};
+
+const addChannelsToLocalStorage = () => {
+    // TODO:
+    // 1. On channel name add , add channel name to channel names list.
+    const channels = [];
+
+    for (let i = 0; i < channelsList.children.length; i++) {
+        const channel = channelsList.children[i].innerText;
+        channels.push(channel);
+    }
+
+    window.localStorage.setItem('channels', JSON.stringify(channels));
 };
