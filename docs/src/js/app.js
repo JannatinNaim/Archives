@@ -1,7 +1,7 @@
 // Channels to listen for messages.
 const channels = [];
 // Notification audio.
-const audio = new Audio('../src/audio/notification.mp3');
+let audio = new Audio('../src/audio/notification.mp3');
 
 // Initiate TMI client.
 let tmiClient = new tmi.Client({
@@ -169,3 +169,12 @@ const addChannelsToLocalStorage = () => {
 
     window.localStorage.setItem('channels', JSON.stringify(channels));
 };
+
+const soundInputForm = document.getElementById('audio_file_input');
+const soundInputButton = document.getElementById('add_sound_button');
+
+soundInputButton.addEventListener('click', (event) => {
+    event.preventDefault();
+
+    audio = new Audio(URL.createObjectURL(soundInputForm.files[0]));
+});
