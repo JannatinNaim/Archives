@@ -55,7 +55,7 @@ const removeChannel = async (channelName, channelNameContainer, channelsList) =>
 };
 
 const retrieveChannels = async () => {
-    const channels = JSON.parse(window.localStorage.getItem('channels'));
+    const channels = JSON.parse(window.localStorage.getItem('channels')) || [];
 
     for (let i = 0; i < channels.length; i++) {
         const channelName = channels[i];
