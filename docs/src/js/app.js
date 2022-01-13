@@ -43,6 +43,8 @@ const removeChannel = async (channelName, channelNameContainer, channelsList) =>
 
     channelsList.removeChild(channelNameContainer);
 
+    addChannelsToLocalStorage();
+
     // Disconnect and reconnect to TMI to refresh listening channels.
     await tmiClient.disconnect();
     await tmiClient.connect();
