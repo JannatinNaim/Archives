@@ -35,6 +35,10 @@ const addChannelButton = document.getElementById('add_channel_button');
 // List of channels listening to.
 const channelsList = document.getElementById('channels_list');
 
+const soundInputFormContainer = document.getElementById('sound_input_form');
+const notificationAdded = document.createElement('p');
+soundInputFormContainer.appendChild(notificationAdded);
+
 const removeChannel = async (channelName, channelNameContainer, channelsList) => {
     // Iterate through all channels listening to and add them to TMI.
     const tmiChannels = tmiClient.channels;
@@ -177,4 +181,8 @@ soundInputButton.addEventListener('click', (event) => {
     event.preventDefault();
 
     audio = new Audio(URL.createObjectURL(soundInputForm.files[0]));
+
+    notificationAdded.innerText = 'Added Notification Sound: ' + soundInputForm.files[0].name;
+
+    window.localStorage.setItem('notification', JSON.stringify(URL.createObjectURL(soundInputForm.files[0])));
 });

@@ -27,6 +27,18 @@
     width: 100%;
 }
 
+.channel_inputs form {
+    margin-bottom: 2rem;
+}
+
+.channel_inputs form input[type='file'] {
+    margin-bottom: 1rem;
+}
+
+.channel_inputs #add_sound_button {
+    margin-bottom: 2rem;
+}
+
 /* Change border on focus. */
 #channel_name_input:focus {
     outline: none;
