@@ -3,3 +3,31 @@
     * HOME PAGE
     ===========
 */
+
+#hero_section .hero_banner img {
+    width: 100%;
+    margin: 2rem 0;
+}
+
+#hero_section .hero_description h1 {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 2rem;
+}
+
+#hero_section .hero_description p {
+    text-align: center;
+}
+
+#hero_section .hero_get_started {
+    text-align: center;
+    margin: 2rem auto;
+    display: block;
+    width: 300px;
+}
+
+@media (max-width: 768px) {
+    #hero_section .hero_get_started {
+        width: 100%;
+    }
+}

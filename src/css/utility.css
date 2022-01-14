@@ -1,0 +1,15 @@
+a.call_to_action {
+    display: inline-block;
+    font-weight: bold;
+    text-decoration: none;
+    color: #fff;
+    background: #e34234;
+    border-radius: 0.5rem;
+    padding: 1rem 2rem;
+    transition: all 0.3s ease-in-out;
+}
+
+a.call_to_action:hover {
+    transition: all 0.3s ease-in-out;
+    transform: scale(1.2);
+}
