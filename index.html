@@ -12,7 +12,7 @@
 
         <!-- * OPEN GRAPH -->
         <meta property="og:title" content="Chat Alerts | Chat Notifications For Your Twitch Stream." />
-        <meta property="og:url" content="https://jannatinnaim.com/ChatAlerts" />
+        <meta property="og:url" content="/ChatAlerts" />
         <meta property="og:description" content="Get notifications for messages on your Twitch chat." />
         <meta
             property="og:image"
@@ -20,6 +20,14 @@
         />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_GB" />
+
+        <!-- * GOOGLE FONTS -->
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;700&family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap"
+            rel="stylesheet"
+        />
 
         <!-- * STYLESHEETS -->
         <link rel="stylesheet" href="./src/css/base.css" />
@@ -29,7 +37,27 @@
         <title>Chat Alerts</title>
     </head>
     <body>
-        <!-- TODO: BUILD SITE -->
+        <!-- * GLOBAL CONTAINER | START -->
+        <div id="global_container">
+            <header id="main_header">
+                <div id="main_branding">
+                    <img src="./src/img/profile_logo.png" alt="Profile Picture" />
+                    <a href="/">Chat Alerts</a>
+                </div>
+                <!-- #main_branding -->
+
+                <nav id="main_navbar">
+                    <ul>
+                        <li><a href="/">Home</a></li>
+                        <li><a href="/">About</a></li>
+                        <li><a href="https://github.com/JannatinNaim">GitHub</a></li>
+                    </ul>
+                </nav>
+                <!-- #main_navbar -->
+            </header>
+            <!-- #main_header -->
+        </div>
+        <!-- * GLOBAL CONTAINER | START -->
 
         <script src="./src/js/home.js" defer></script>
     </body>

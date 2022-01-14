@@ -4,8 +4,92 @@
     =============
 */
 
+/* * GLOBAL RESETS */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+}
+
+/* * FONT SETTINGS */
+body {
+    font-family: 'JetBrains Mono', sans-serif;
+    color: #333;
+}
+
+/* * GLOBAL CONTAINER */
+#global_container {
+    margin: 0 auto;
+    max-width: 1100px;
+    width: 90%;
+}
+
+/* * MAIN HEADER */
+
+#main_header {
+    /* Center header elements. */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem 0;
+}
+
+#main_branding {
+    /* Center logo and name. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#main_branding a {
+    /* Change link styles. */
+    color: #333;
+    text-decoration: none;
+    font-size: 2rem;
+    font-weight: 700;
+}
+
+#main_branding img {
+    /* Set logo width. */
+    width: 100px;
+}
+
+#main_navbar ul {
+    /* Flex navbar links. */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+#main_navbar li {
+    /* Style list items with animations. */
+    margin-left: 1rem;
+    list-style: none;
+    transition: all 0.3s ease-in-out;
+}
+
+#main_navbar a {
+    /* Style navigation links. */
+    color: #333;
+    font-weight: 700;
+    text-decoration: none;
+}
+
+#main_navbar li:hover {
+    /* Navigation link hover animation. */
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
+}
+
+/* * TABLET VIEW */
+@media (max-width: 768px) {
+    #main_header {
+        /* Column layout for tablet view. */
+        flex-direction: column;
+    }
+
+    #main_branding {
+        /* Space out branding and navigation. */
+        margin-bottom: 1rem;
+    }
 }
