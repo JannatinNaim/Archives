@@ -7,6 +7,7 @@ a.call_to_action {
     border-radius: 0.5rem;
     padding: 1rem 2rem;
     transition: all 0.3s ease-in-out;
+    box-shadow: 0 4px #333;
 }
 
 a.call_to_action:hover {
