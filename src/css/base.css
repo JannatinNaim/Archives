@@ -93,3 +93,14 @@ body {
         margin-bottom: 1rem;
     }
 }
+
+#main_footer {
+    text-align: center;
+    padding: 2rem;
+}
+
+#main_footer a {
+    font-weight: 700;
+    text-decoration: none;
+    color: #333;
+}
