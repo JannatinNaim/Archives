@@ -1,0 +1,198 @@
+#hero_section .hero_banner img {
+    width: 100%;
+    margin: 2rem 0;
+}
+
+#add_channel_section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#add_channel_section .add_channel_header {
+    margin: 1rem 0;
+}
+
+#add_channel_section .add_channel_name {
+    margin-bottom: 1rem;
+    padding: 1rem;
+    font-size: 24px;
+    width: 400px;
+    height: 48px;
+    display: block;
+    border-radius: 8px;
+}
+
+#add_channel_section .add_channel_name:focus {
+    outline: none;
+    border: 2px solid #d9381e;
+}
+
+#add_channel_section .add_channel_button {
+    margin: 0 auto;
+    width: 300px;
+    display: block;
+}
+
+#channel_notifications_section {
+    margin: 2rem 0;
+}
+
+#channel_notifications_section .channel_notifications_list {
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    background: rgb(245, 244, 244);
+    border-radius: 8px;
+    border: 1px solid #d9381e;
+    box-shadow: 0 4px #333;
+}
+
+#channel_notifications_section .channel_list {
+    width: 40%;
+}
+
+#channel_notifications_section .channel_notifications_banner_text_container {
+    transform: rotate(-90deg);
+}
+
+#channel_notifications_section .channel_notifications_banner_text {
+    position: absolute;
+    overflow: visible;
+    white-space: nowrap;
+    font-size: 24px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+}
+
+#channel_notifications_section .channel_notifications_channel {
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    min-width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* font-weight: 700; */
+    letter-spacing: 1px;
+    box-shadow: 0 0 5px;
+}
+
+#channel_notifications_section .channel_notifications_channel .channel_name {
+    width: 80%;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 700;
+}
+
+#channel_notifications_section .channel_notifications_channel .iconify {
+    margin-left: 1rem;
+}
+
+#channel_notifications_section .channel_notifications_channel .iconify:hover {
+    cursor: pointer;
+}
+
+@media (max-width: 768px) {
+    #channel_notifications_section .channel_notifications_list {
+        flex-direction: column;
+    }
+
+    #channel_notifications_section .channel_notifications_banner_text_container {
+        order: -1;
+        margin: 1rem 0;
+        transform: none;
+    }
+
+    #channel_notifications_section .channel_notifications_banner_text {
+        transform: none;
+        position: static;
+    }
+
+    #channel_notifications_section .channel_list {
+        width: 100%;
+    }
+
+    #channel_notifications_section .channel_notifications_channel:last-child {
+        margin-bottom: 0;
+    }
+}
+
+#notification_sound_section {
+    margin: 4rem 0;
+}
+
+#notification_sound_section .notification_sound_section_header {
+    margin: 2rem 0;
+    text-align: center;
+}
+
+#notification_sound_section .notification_sound_section_header .muted_text {
+    opacity: 0.3;
+}
+
+#notification_sound_section .notification_sound_section_form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#notification_sound_section #notification_sound_file {
+    display: none;
+}
+
+#notification_sound_section .notification_sound_file_label {
+    background: #b7b7b7;
+    padding: 1rem 4rem;
+    width: 300px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+@media (max-width: 768px) {
+    #notification_sound_section .notification_sound_section_form .notification_sound_file_label,
+    #notification_sound_section .notification_sound_section_form .notification_sound_add_button {
+        /* Call to action takes full width on smaller device. */
+        width: 100%;
+    }
+}
+
+#social_links_section {
+    /* Space out social links section. */
+    margin: 4rem;
+}
+
+#social_links_section ul {
+    /* Center links. */
+    display: flex;
+    list-style: none;
+    justify-content: center;
+}
+
+#social_links_section li {
+    /* Space out links. */
+    margin: 0 2rem;
+}
+
+#social_links_section li a {
+    /* Style link icons. */
+    display: inline-block;
+    text-decoration: none;
+    color: #333;
+    transition: all 0.3s ease-in-out;
+}
+
+#social_links_section li a:hover {
+    /* Link icons hover animation. */
+    color: #555;
+    transform: scale(1.2);
+    transition: all 0.3s ease-in-out;
+}
