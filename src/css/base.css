@@ -99,11 +99,13 @@ body {
 }
 
 #main_footer {
+    /* Center align footer. */
     text-align: center;
     padding: 2rem;
 }
 
 #main_footer a {
+    /* Style footer text. */
     font-weight: 700;
     text-decoration: none;
     color: #333;
