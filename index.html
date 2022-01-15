@@ -23,14 +23,15 @@
         <meta property="og:image:height" content="925" />
         <meta property="og:type" content="website" />
         <meta property="og:locale" content="en_GB" />
-        
-        <!-- TWITTER PREVIEW META -->
-        <meta name="twitter:card" content="summary_large_image">
-        <meta property="twitter:domain" content="jannatinnaim.com">
-        <meta property="twitter:url" content="https://jannatinnaim.com/ChatAlerts/">
-        <meta name="twitter:title" content="Chat Alerts | Chat Notifications For Your Twitch Stream.">
-        <meta name="twitter:description" content="Get notifications for messages on your Twitch chat.">
-        <meta name="twitter:image" content="https://raw.githubusercontent.com/JannatinNaim/ChatAlerts/main/.github/README/banner.png">
+        <meta name="twitter:card" content="summary_large_image" />
+        <meta property="twitter:domain" content="jannatinnaim.com" />
+        <meta property="twitter:url" content="https://jannatinnaim.com/ChatAlerts/" />
+        <meta name="twitter:title" content="Chat Alerts | Chat Notifications For Your Twitch Stream." />
+        <meta name="twitter:description" content="Get notifications for messages on your Twitch chat." />
+        <meta
+            name="twitter:image"
+            content="https://raw.githubusercontent.com/JannatinNaim/ChatAlerts/main/.github/README/banner.png"
+        />
 
         <!-- * GOOGLE FONTS -->
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -65,8 +66,8 @@
                     <ul>
                         <li><a href="./index.html">Home</a></li>
                         <li><a href="./app.html">App</a></li>
-                        <li><a href="./index.html">About</a></li>
-                        <li><a href="https://github.com/JannatinNaim">GitHub</a></li>
+                        <li><a href="./index.html#about_section">About</a></li>
+                        <li><a href="https://github.com/JannatinNaim/ChatAlerts">GitHub</a></li>
                     </ul>
                 </nav>
                 <!-- #main_navbar -->
@@ -80,8 +81,10 @@
                 <!-- .hero_banner -->
 
                 <div class="hero_description">
-                    <h1>Focus on what's Important!</h1>
-                    <p>Chat notifications for you Twitch stream. Keep up with your viewers at all times.</p>
+                    <h1 class="hero_title">Focus on what's Important!</h1>
+                    <p class="hero_content">
+                        Chat notifications for you Twitch stream. Keep up with your viewers at all times.
+                    </p>
                 </div>
                 <!-- .hero_description -->
 
@@ -91,15 +94,15 @@
 
             <section id="about_section">
                 <div class="about_description">
-                    <h2>What's Chat Alerts?</h2>
+                    <h2 class="about_title">What's Chat Alerts?</h2>
 
-                    <p>
+                    <p class="about_content">
                         Chat Alerts is for small streamers to help interact with their chat. Streamers that need to
                         constantly look at chat to check for new messages can get distracted from their stream content
                         which drops the quality of the stream.
                     </p>
 
-                    <p>
+                    <p class="about_content">
                         It fits the needs for those small streamers by sending out audio notifications to hint the
                         streamer for new chat messages.
                     </p>
@@ -114,62 +117,42 @@
             <!-- #about_section -->
 
             <section id="social_links_section">
-                <ul>
-                    <!-- * FACEBOOK LINK -->
-                    <li>
-                        <a href="https://facebook.com/JannatinNaimOnFB/" target="_blank"
-                            ><span
-                                class="iconify"
-                                data-icon="akar-icons:facebook-fill"
-                                data-width="64"
-                                data-height="64"
-                            ></span
-                        ></a>
-                    </li>
-                    <!-- * YOUTUBE LINK -->
-                    <li>
-                        <a href="https://www.youtube.com/channel/UC6DS9q5oyPmmX5g3Tc9CEXg" target="_blank"
-                            ><span
-                                class="iconify"
-                                data-icon="akar-icons:youtube-fill"
-                                data-width="64"
-                                data-height="64"
-                            ></span
-                        ></a>
-                    </li>
-                    <!-- * GITHUB LINK -->
-                    <li>
-                        <a href="https://github.com/JannatinNaim/" target="_blank"
-                            ><span
-                                class="iconify"
-                                data-icon="akar-icons:github-fill"
-                                data-width="64"
-                                data-height="64"
-                            ></span
-                        ></a>
-                    </li>
-                    <!-- * DISCORD LINK -->
-                    <li>
-                        <a href="https://discord.gg/KskcSs8Nb8" target="_blank"
-                            ><span
-                                class="iconify"
-                                data-icon="akar-icons:discord-fill"
-                                data-width="64"
-                                data-height="64"
-                            ></span
-                        ></a>
-                    </li>
-                    <!-- * TWITTER LINK -->
-                    <li>
-                        <a href="https://twitter.com/JannatinNaimJN" target="_blank"
-                            ><span
-                                class="iconify"
-                                data-icon="akar-icons:twitter-fill"
-                                data-width="64"
-                                data-height="64"
-                            ></span>
+                <ul class="social_links">
+                    <li class="facebook_link">
+                        <a href="https://facebook.com/JannatinNaimOnFB/" target="_blank">
+                            <span class="iconify" data-icon="akar-icons:facebook-fill" data-width="64" data-height="64">
+                            </span>
                         </a>
                     </li>
+                    <!-- .facebook_link -->
+                    <li class="youtube_link">
+                        <a href="https://www.youtube.com/channel/UC6DS9q5oyPmmX5g3Tc9CEXg" target="_blank">
+                            <span class="iconify" data-icon="akar-icons:youtube-fill" data-width="64" data-height="64">
+                            </span>
+                        </a>
+                    </li>
+                    <!-- .youtube_link -->
+                    <li class="github_link">
+                        <a href="https://github.com/JannatinNaim/" target="_blank">
+                            <span class="iconify" data-icon="akar-icons:github-fill" data-width="64" data-height="64">
+                            </span
+                        ></a>
+                    </li>
+                    <!-- .github_link -->
+                    <li class="discord_link">
+                        <a href="https://discord.gg/KskcSs8Nb8" target="_blank">
+                            <span class="iconify" data-icon="akar-icons:discord-fill" data-width="64" data-height="64">
+                            </span>
+                        </a>
+                    </li>
+                    <!-- .discord_link -->
+                    <li class="twitter_link">
+                        <a href="https://twitter.com/JannatinNaimJN" target="_blank">
+                            <span class="iconify" data-icon="akar-icons:twitter-fill" data-width="64" data-height="64">
+                            </span>
+                        </a>
+                    </li>
+                    <!-- .twitter_link -->
                 </ul>
             </section>
             <!-- #social_links_section -->

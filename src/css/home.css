@@ -4,98 +4,127 @@
     ===========
 */
 
+/* * HERO SECTION */
+
 #hero_section .hero_banner img {
+    /* Center hero image with full width. */
     width: 100%;
     margin: 2rem 0;
 }
 
 #hero_section .hero_description h1 {
+    /* Center hero title. */
     text-align: center;
     font-size: 3rem;
     margin-bottom: 2rem;
 }
 
 #hero_section .hero_description p {
+    /* Center hero description. */
     text-align: center;
 }
 
 #hero_section .hero_get_started {
+    /* Call To Action button styles. */
     text-align: center;
     margin: 2rem auto;
     display: block;
     width: 300px;
 }
 
+/* * HERO SECTION TABLET VIEW */
+
 @media (max-width: 768px) {
     #hero_section .hero_get_started {
+        /* Call to action takes full width on smaller device. */
         width: 100%;
     }
 }
 
+/* * ABOUT SECTION */
+
 #about_section {
+    /* Flex about section items. */
     display: flex;
     justify-content: space-between;
+    align-items: flex-end;
     margin: 4rem 0;
 }
 
 #about_section .about_description h2 {
+    /* Style about section title.. */
     font-size: 1.5rem;
     margin: 2rem 0;
 }
 
 #about_section .about_description p {
+    /* Style about section description. */
     margin: 1rem 0;
 }
 
 #about_section .about_description {
+    /* Style about section Call To Action. */
     width: 300px;
     text-align: center;
 }
 
 #about_section .about_description,
 #about_section .about_banner {
+    /* Set width of about banner and content to half of the screen. */
     width: 40%;
 }
 
 #about_section .about_banner img {
+    /* Banner image take entire width of container. */
     width: 100%;
 }
 
+/* * ABOUT SECTION TABLET VIEW */
 @media (max-width: 768px) {
     #about_section {
+        /* Switch to column layout on tablets. */
         flex-direction: column;
     }
 
     #about_section .about_description {
+        /* Switch banner order and width. */
         width: 100%;
         order: 2;
     }
 
     #about_section .about_banner {
+        /* Switch about content order and width. */
         width: 100%;
         order: 1;
     }
 
     #about_section .about_get_started {
+        /* Set call to action to full width. */
         width: 100%;
     }
 }
 
+/* * SOCIAL LINKS SECTION */
+
 #social_links_section {
+    /* Space out social links section. */
     margin: 4rem;
 }
 
 #social_links_section ul {
+    /* Center links. */
     display: flex;
     list-style: none;
     justify-content: center;
 }
 
 #social_links_section li {
-    margin: 0 1rem;
+    /* Space out links. */
+    margin: 0 2rem;
 }
 
 #social_links_section li a {
+    /* Style link icons. */
     display: inline-block;
     text-decoration: none;
     color: #333;
@@ -103,6 +132,8 @@
 }
 
 #social_links_section li a:hover {
+    /* Link icons hover animation. */
+    color: #555;
     transform: scale(1.2);
     transition: all 0.3s ease-in-out;
 }
