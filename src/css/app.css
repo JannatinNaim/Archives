@@ -201,35 +201,3 @@
         width: 100%;
     }
 }
-
-#social_links_section {
-    /* Space out social links section. */
-    margin: 4rem;
-}
-
-#social_links_section ul {
-    /* Center links. */
-    display: flex;
-    list-style: none;
-    justify-content: center;
-}
-
-#social_links_section li {
-    /* Space out links. */
-    margin: 0 2rem;
-}
-
-#social_links_section li a {
-    /* Style link icons. */
-    display: inline-block;
-    text-decoration: none;
-    color: #333;
-    transition: all 0.3s ease-in-out;
-}
-
-#social_links_section li a:hover {
-    /* Link icons hover animation. */
-    color: #555;
-    transform: scale(1.2);
-    transition: all 0.3s ease-in-out;
-}
