@@ -1,8 +1,15 @@
 /* * HERO SECTION */
 
+#hero_section .hero_banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 #hero_section .hero_banner img {
     /* Center hero banner image. */
     width: 100%;
+    max-width: 800px;
     margin: 2rem 0;
 }
 
