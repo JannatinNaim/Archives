@@ -48,9 +48,10 @@ channelInputForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     // Add channels to the page.
-    addChannelToDocument();
-    // Add channels to TMI client.
-    addChannelToTMIClient();
+    addChannelToDocument().then((callAddChannelToTMIClient) => {
+        // If channels were added to page, then add channels to TMI client as well.
+        if (callAddChannelToTMIClient) addChannelToTMIClient();
+    });
 });
 
 /*
@@ -58,13 +59,15 @@ channelInputForm.addEventListener('submit', (event) => {
  */
 const addChannelToDocument = () => {
     // Get channel name from input field.
-    const channelName = channelNameInput.value;
+    const channelName = channelNameInput.value.toLowerCase();
     // Stop if no channel name is given. Shouldn't be possible cause it requires a value to be submitted.
     if (!channelName) return;
 
     // Variable to check if the channel exists. For exiting the loop.
     // ? Needs a better implementation.
     let channelAdded = false;
+    // Whether to call addChannelsToTMIClient or not.
+    let callAddChannelToTMIClient = false;
 
     // Check each name and add to list.
     channelNames.forEach((channelElement) => {
@@ -72,7 +75,7 @@ const addChannelToDocument = () => {
         if (channelAdded) return;
 
         // Get channel name from the element's inner text.
-        const channel = channelElement.innerText;
+        const channel = channelElement.innerText.toLowerCase();
 
         // If channel name exists, set channelAdded to true and exit.
         // If not, add channel to the element and exit.
@@ -82,6 +85,7 @@ const addChannelToDocument = () => {
         } else if (channel === '') {
             channelElement.innerText = channelName;
             channelAdded = true;
+            callAddChannelToTMIClient = true;
         }
     });
 
@@ -92,8 +96,24 @@ const addChannelToDocument = () => {
 
     // Clear channel input field.
     channelNameInput.value = '';
+
+    // Can add .then() to call addChannelToTMIClient.
+    return Promise.resolve(callAddChannelToTMIClient);
 };
 
-const addChannelToTMIClient = () => {
-    // TODO: Add channels to TMI.
+const addChannelToTMIClient = async () => {
+    // Empty channels array.
+    channels.length = 0;
+    // Add each channel name to channels array.
+    channelNames.forEach((channelElement) => {
+        // Get channel name.
+        const channel = channelElement.innerText;
+
+        // If channel name exists, add them to the array.
+        if (channel) channels.push(channel);
+    });
+
+    // Disconnect and reconnect TMI client.
+    await client.disconnect();
+    await client.connect();
 };
