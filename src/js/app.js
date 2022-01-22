@@ -134,33 +134,35 @@ const addChannelToTMIClient = async () => {
     await client.connect();
 };
 
+channelNotificationsList.addEventListener('click', (event) => {
+    if (event.target.nodeName !== 'svg') return;
+
+    removeChannelFromDocumentAndTMIClient(event);
+});
+
 /*
  * Removes a channel from the document and TMI client.
  */
-const removeChannelFromDocumentAndTMIClient = () => {
-    channelNotificationsList.addEventListener('click', async (event) => {
-        if (event.target.nodeName !== 'svg') return;
+const removeChannelFromDocumentAndTMIClient = async (event) => {
+    const channelName = event.target.previousElementSibling.innerText;
+    event.target.previousElementSibling.innerText = '';
 
-        const channelName = event.target.previousElementSibling.innerText;
-        event.target.previousElementSibling.innerText = '';
+    if (!channelName) return;
 
-        if (!channelName) return;
+    const channels = [];
+    channelNames.forEach((channelElement) => {
+        // Get channel name.
+        const channel = channelElement.innerText;
+        channelElement.innerText = '';
 
-        const channels = [];
-        channelNames.forEach((channelElement) => {
-            // Get channel name.
-            const channel = channelElement.innerText;
-            channelElement.innerText = '';
-
-            // If channel name exists, add them to the array.
-            if (channel) channels.push(channel);
-        });
-
-        channels.forEach((channel) => {
-            addChannelToDocument(channel);
-        });
-        await addChannelToTMIClient();
+        // If channel name exists, add them to the array.
+        if (channel) channels.push(channel);
     });
+
+    channels.forEach((channel) => {
+        addChannelToDocument(channel);
+    });
+    await addChannelToTMIClient();
 };
 
 // Listen for user input for new notification sound.
