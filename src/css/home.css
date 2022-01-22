@@ -16,14 +16,14 @@
     /* Center hero image with full width. */
     width: 100%;
     max-width: 800px;
-    margin: 2rem 0;
+    margin: 0.5rem 0;
 }
 
 #hero_section .hero_description h1 {
     /* Center hero title. */
     text-align: center;
     font-size: 3rem;
-    margin-bottom: 2rem;
+    margin-bottom: 0.5rem;
 }
 
 #hero_section .hero_description p {
@@ -34,7 +34,7 @@
 #hero_section .hero_get_started {
     /* Call To Action button styles. */
     text-align: center;
-    margin: 2rem auto;
+    margin: 1.5rem auto;
     display: block;
     width: 300px;
 }

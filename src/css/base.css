@@ -31,7 +31,7 @@ body {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 0;
+    padding: 0.5rem 0;
 }
 
 #main_branding {
@@ -45,13 +45,14 @@ body {
     /* Change link styles. */
     color: #333;
     text-decoration: none;
-    font-size: 2rem;
+    font-size: 1.35rem;
     font-weight: 700;
 }
 
 #main_branding img {
     /* Set logo width. */
-    width: 100px;
+    width: 64px;
+    margin-right: 1rem;
 }
 
 #main_navbar ul {
