@@ -1,7 +1,7 @@
 // Default Channels List
 const channels = [];
 // Default Notification Sound
-const notification = new Audio('./src/audio/notification.mp3');
+let notification = new Audio('./src/audio/notification.mp3');
 
 // Client Settings
 const clientOptions = {
@@ -45,7 +45,17 @@ const channelNames = document.querySelectorAll('.channel_notifications_list .cha
 // #channel_notifications_section .channel_notifications_list
 // Channel notification list parent.
 const channelNotificationsList = document.querySelector('.channel_notifications_list');
+// #notification_sound_section .notification_sound_form
+// The actual form for the sound input fields.
+const notificationSoundForm = document.querySelector('.notification_sound_section_form');
+// #notification_sound_file
+// The input field for the notification sound file.
+const notificationSoundInput = document.querySelector('#notification_sound_file');
+// #notification_sound_section .notification_sound_form .notification_sound_file_label
+// The label for the hidden input element.
+const notificationSoundLabel = document.querySelector('.notification_sound_file_label');
 
+// Listen for user input of new channels.
 channelInputForm.addEventListener('submit', (event) => {
     // Prevent from reloading the page.
     event.preventDefault();
@@ -151,4 +161,27 @@ const removeChannelFromDocumentAndTMIClient = () => {
         });
         await addChannelToTMIClient();
     });
+};
+
+// Listen for user input for new notification sound.
+notificationSoundForm.addEventListener('submit', (event) => {
+    // Prevent page from reloading.
+    event.preventDefault();
+
+    addNotificationSound();
+});
+
+// Listen for user change file source for notification sound.
+notificationSoundInput.addEventListener('change', () => {
+    notificationSoundLabel.innerText = notificationSoundInput.files[0].name;
+});
+
+/*
+ * Add new notification sound.
+ */
+const addNotificationSound = () => {
+    const notificationSoundFilePath = URL.createObjectURL(notificationSoundInput.files[0]);
+    const notificationSound = new Audio(notificationSoundFilePath);
+
+    notification = notificationSound;
 };
