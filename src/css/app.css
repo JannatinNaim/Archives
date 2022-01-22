@@ -110,6 +110,9 @@
 #channel_notifications_section .channel_notifications_channel .channel_name {
     /* Style channel name. */
     width: 80%;
+    height: 36px;
+    display: flex;
+    align-items: center;
     overflow: hidden;
     white-space: nowrap;
     text-overflow: ellipsis;

@@ -42,33 +42,19 @@ const channelNameInput = document.querySelector('.add_channel_form .add_channel_
 // #channel_notifications_section .channel_notifications_list .channel_name
 // Each span with channel names.
 const channelNames = document.querySelectorAll('.channel_notifications_list .channel_name');
-// #channel_notifications_section .channel_notifications_list .channel_name_remove
-// Every span with the x icon for removing channels.
-const channelNamesRemove = document.querySelectorAll('.channel_notifications_list .channel_name_remove');
-
-// ! WIP
-
+// #channel_notifications_section .channel_notifications_list
+// Channel notification list parent.
 const channelNotificationsList = document.querySelector('.channel_notifications_list');
-
-channelNotificationsList.addEventListener('click', (event) => {
-    if (event.target.nodeName !== 'svg') return;
-
-    const channelName = event.target.previousElementSibling.innerText;
-
-    if (!channelName) return;
-
-    event.target.previousElementSibling.innerText = '';
-    addChannelToTMIClient();
-});
-
-// ! WIP END
 
 channelInputForm.addEventListener('submit', (event) => {
     // Prevent from reloading the page.
     event.preventDefault();
 
+    // Get channel name from input field.
+    const channelName = channelNameInput.value ? channelNameInput.value.trim().toLowerCase() : '';
+
     // Add channels to the page.
-    const callAddChannelToTMIClient = addChannelToDocument();
+    const callAddChannelToTMIClient = addChannelToDocument(channelName);
     // If channels were added to page, then add channels to TMI client as well.
     if (callAddChannelToTMIClient) addChannelToTMIClient();
 });
@@ -76,9 +62,7 @@ channelInputForm.addEventListener('submit', (event) => {
 /*
  * Add the channel name from the input field to the channels list.
  */
-const addChannelToDocument = () => {
-    // Get channel name from input field.
-    const channelName = channelNameInput.value ? channelNameInput.value.trim().toLowerCase() : '';
+const addChannelToDocument = (channelName) => {
     // Stop if no channel name is given. Shouldn't be possible cause it requires a value to be submitted.
     if (!channelName) return;
 
@@ -138,4 +122,33 @@ const addChannelToTMIClient = async () => {
     // Disconnect and reconnect TMI client.
     await client.disconnect();
     await client.connect();
+};
+
+/*
+ * Removes a channel from the document and TMI client.
+ */
+const removeChannelFromDocumentAndTMIClient = () => {
+    channelNotificationsList.addEventListener('click', async (event) => {
+        if (event.target.nodeName !== 'svg') return;
+
+        const channelName = event.target.previousElementSibling.innerText;
+        event.target.previousElementSibling.innerText = '';
+
+        if (!channelName) return;
+
+        const channels = [];
+        channelNames.forEach((channelElement) => {
+            // Get channel name.
+            const channel = channelElement.innerText;
+            channelElement.innerText = '';
+
+            // If channel name exists, add them to the array.
+            if (channel) channels.push(channel);
+        });
+
+        channels.forEach((channel) => {
+            addChannelToDocument(channel);
+        });
+        await addChannelToTMIClient();
+    });
 };
