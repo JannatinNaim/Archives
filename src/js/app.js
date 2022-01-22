@@ -48,10 +48,9 @@ channelInputForm.addEventListener('submit', (event) => {
     event.preventDefault();
 
     // Add channels to the page.
-    addChannelToDocument().then((callAddChannelToTMIClient) => {
-        // If channels were added to page, then add channels to TMI client as well.
-        if (callAddChannelToTMIClient) addChannelToTMIClient();
-    });
+    const callAddChannelToTMIClient = addChannelToDocument();
+    // If channels were added to page, then add channels to TMI client as well.
+    if (callAddChannelToTMIClient) addChannelToTMIClient();
 });
 
 /*
@@ -59,7 +58,7 @@ channelInputForm.addEventListener('submit', (event) => {
  */
 const addChannelToDocument = () => {
     // Get channel name from input field.
-    const channelName = channelNameInput.value.toLowerCase();
+    const channelName = channelNameInput.value ? channelNameInput.value.trim().toLowerCase() : '';
     // Stop if no channel name is given. Shouldn't be possible cause it requires a value to be submitted.
     if (!channelName) return;
 
@@ -98,9 +97,12 @@ const addChannelToDocument = () => {
     channelNameInput.value = '';
 
     // Can add .then() to call addChannelToTMIClient.
-    return Promise.resolve(callAddChannelToTMIClient);
+    return callAddChannelToTMIClient;
 };
 
+/*
+ * Add channels to TMI Client channels list.
+ */
 const addChannelToTMIClient = async () => {
     // Empty channels array.
     channels.length = 0;
