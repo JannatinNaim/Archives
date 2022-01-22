@@ -42,6 +42,26 @@ const channelNameInput = document.querySelector('.add_channel_form .add_channel_
 // #channel_notifications_section .channel_notifications_list .channel_name
 // Each span with channel names.
 const channelNames = document.querySelectorAll('.channel_notifications_list .channel_name');
+// #channel_notifications_section .channel_notifications_list .channel_name_remove
+// Every span with the x icon for removing channels.
+const channelNamesRemove = document.querySelectorAll('.channel_notifications_list .channel_name_remove');
+
+// ! WIP
+
+const channelNotificationsList = document.querySelector('.channel_notifications_list');
+
+channelNotificationsList.addEventListener('click', (event) => {
+    if (event.target.nodeName !== 'svg') return;
+
+    const channelName = event.target.previousElementSibling.innerText;
+
+    if (!channelName) return;
+
+    event.target.previousElementSibling.innerText = '';
+    addChannelToTMIClient();
+});
+
+// ! WIP END
 
 channelInputForm.addEventListener('submit', (event) => {
     // Prevent from reloading the page.
@@ -96,7 +116,7 @@ const addChannelToDocument = () => {
     // Clear channel input field.
     channelNameInput.value = '';
 
-    // Can add .then() to call addChannelToTMIClient.
+    // If addChannelToTMIClient can be called or not.
     return callAddChannelToTMIClient;
 };
 

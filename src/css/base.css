@@ -11,6 +11,13 @@
     box-sizing: border-box;
 }
 
+/* * GENERAL SETTINGS */
+svg g,
+svg path {
+    /* Stop SVG elements from triggering a click event. */
+    pointer-events: none;
+}
+
 /* * FONT SETTINGS */
 body {
     font-family: 'JetBrains Mono', sans-serif;
