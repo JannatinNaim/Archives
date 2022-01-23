@@ -158,7 +158,20 @@ body {
 }
 
 @media (max-width: 768px) {
+    #social_links_section .social_links li {
+        /* Reduce spacing on smaller screens. */
+        margin: 0 1rem;
+    }
+
     #social_links_section .social_links li a > svg {
+        /* Make icons smaller on smaller screens. */
         font-size: 32px;
+    }
+}
+
+@media (max-width: 456px) {
+    #social_links_section .social_links li a > svg {
+        /* Make icons smaller on even smaller screens. */
+        font-size: 24px;
     }
 }
