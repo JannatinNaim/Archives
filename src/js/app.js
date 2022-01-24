@@ -182,8 +182,12 @@ notificationSoundInput.addEventListener('change', () => {
  * Add new notification sound.
  */
 const addNotificationSound = () => {
-    const notificationSoundFilePath = URL.createObjectURL(notificationSoundInput.files[0]);
+    const notificationSoundFile = notificationSoundInput.files[0];
+    if (!notificationSoundFile) return;
+
+    const notificationSoundFilePath = URL.createObjectURL(notificationSoundFile);
     const notificationSound = new Audio(notificationSoundFilePath);
 
     notification = notificationSound;
+    notificationSoundLabel.style.background = '#2ead07';
 };
