@@ -54,6 +54,15 @@ const notificationSoundInput = document.querySelector('#notification_sound_file'
 // #notification_sound_section .notification_sound_form .notification_sound_file_label
 // The label for the hidden input element.
 const notificationSoundLabel = document.querySelector('.notification_sound_file_label');
+// #notification_sound_section_form .notification_volume_container .notification_volume_slider input
+// The volume slider for input.
+const notificationVolumeSlider = document.querySelector('.notification_volume_slider input');
+// #notification_sound_section_form .notification_volume_container .notification_volume_slider progress
+// Progress bar showing what the value is.
+const notificationVolumeSliderProgress = document.querySelector('.notification_volume_slider progress');
+// #notification_sound_section_form .notification_volume_container .notification_volume_slider_value
+// Text value of the current volume.
+const notificationVolumeValue = document.querySelector('.notification_volume_slider_value');
 
 // Listen for user input of new channels.
 channelInputForm.addEventListener('submit', (event) => {
@@ -190,4 +199,22 @@ const addNotificationSound = () => {
 
     notification = notificationSound;
     notificationSoundLabel.style.background = '#2ead07';
+};
+
+// Listen for volume change.
+notificationVolumeSlider.addEventListener('input', () => changeNotificationVolume());
+
+/*
+ * Change volume of notification.
+ */
+const changeNotificationVolume = () => {
+    // Get the volume value from the input.
+    const volume = notificationVolumeSlider.value;
+
+    // Set volume to match progress and text.
+    notificationVolumeSliderProgress.value = volume;
+    notificationVolumeValue.innerText = volume;
+
+    // Set volume of audio notification (range 1.0 = 0)
+    notification.volume = volume / 100;
 };

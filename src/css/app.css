@@ -217,3 +217,68 @@
         width: 100%;
     }
 }
+
+.notification_volume_container {
+    padding: 25px;
+    margin-bottom: 2rem;
+    border: 1px solid red;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification_volume_slider {
+    position: relative;
+    width: 300px;
+    height: 8px;
+}
+
+.notification_volume_slider input[type='range'] {
+    position: absolute;
+    left: -2px;
+    top: 0;
+    width: 304px;
+    height: 8px;
+    -webkit-appearance: none;
+    background: transparent;
+    z-index: 999;
+}
+
+.notification_volume_slider input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border: 2px solid red;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.notification_volume_slider input::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+.notification_volume_slider progress {
+    width: 300px;
+    height: 8px;
+    -webkit-appearance: none;
+    position: absolute;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.notification_volume_slider progress::-webkit-progress-bar {
+    background: #f0f0f0;
+}
+
+.notification_volume_slider progress::-webkit-progress-value {
+    background: red;
+}
+
+.notification_volume_slider_value {
+    width: 28px;
+    height: 20px;
+    margin-left: 10px;
+    text-align: center;
+}

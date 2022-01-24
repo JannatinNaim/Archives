@@ -179,6 +179,7 @@
                 <h2 class="notification_sound_section_header">
                     Custom Notification Sound <span class="muted_text">(Optional)</span>
                 </h2>
+                <!-- .notification_sound_selection_header -->
 
                 <form class="notification_sound_section_form">
                     <label class="notification_sound_file_label" for="notification_sound_file">
@@ -190,9 +191,22 @@
                             name="notification_sound_file"
                         />
                     </label>
+                    <!-- .notification_sound_file_label -->
+
+                    <div class="notification_volume_container">
+                        <div class="notification_volume_slider">
+                            <input type="range" min="0" max="100" value="75" />
+                            <progress min="0" max="100" value="75"></progress>
+                        </div>
+                        <div class="notification_volume_slider_value">75</div>
+                    </div>
+                    <!-- .notification_volume_container -->
+
                     <button class="notification_sound_add_button call_to_action" type="submit">ADD NOTIFICATION</button>
                 </form>
+                <!-- .notification_sound_section_form -->
             </section>
+            <!-- #notification_sound_section -->
 
             <section id="social_links_section">
                 <ul class="social_links">
