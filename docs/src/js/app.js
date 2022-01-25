@@ -3,6 +3,10 @@ const channels = [];
 // Default Notification Sound
 let notification = new Audio('./src/audio/notification.mp3');
 
+//Critical variables to avoid sending too many notifications
+const minutesOfSilenceBeforePlayingNotification = 2
+let timeLastMessageWasSent = new Date();
+
 // Client Settings
 const clientOptions = {
     channels,
@@ -23,8 +27,17 @@ client.on('chat', (channel, userState, message, self) => {
     // Return if message from self.
     if (self) return;
 
-    // Play notification sound.
-    notification.play();
+    //check how long it's been since the last message was sent
+    const now = new Date();
+    const timeSinceLastMesageInMs =  Number(now) - Number(timeLastMessageWasSent);
+    const minutesSinceLastMessage = timeSinceLastMesageInMs / 1000 / 60;
+    
+    if ( minutesSinceLastMessage > minutesOfSilenceBeforePlayingNotification){ 
+        // Play notification sound.
+        notification.play();
+    }
+    //Reset global variable to create a cooldown period
+    timeLastMessageWasSent = now
 });
 
 // Connect To Twitch
