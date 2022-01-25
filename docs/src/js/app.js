@@ -4,7 +4,7 @@ const channels = [];
 let notification = new Audio('./src/audio/notification.mp3');
 
 //Critical variables to avoid sending too many notifications
-const minutesOfSilenceBeforePlayingNotification = 2
+const minutesOfSilenceBeforePlayingNotification = 0;
 let timeLastMessageWasSent = new Date();
 
 // Client Settings
@@ -29,15 +29,15 @@ client.on('chat', (channel, userState, message, self) => {
 
     //check how long it's been since the last message was sent
     const now = new Date();
-    const timeSinceLastMesageInMs =  Number(now) - Number(timeLastMessageWasSent);
-    const minutesSinceLastMessage = timeSinceLastMesageInMs / 1000 / 60;
-    
-    if ( minutesSinceLastMessage > minutesOfSilenceBeforePlayingNotification){ 
+    const timeSinceLastMessageInMs = Number(now) - Number(timeLastMessageWasSent);
+    const minutesSinceLastMessage = timeSinceLastMessageInMs / 1000 / 60;
+
+    if (minutesSinceLastMessage > minutesOfSilenceBeforePlayingNotification) {
         // Play notification sound.
         notification.play();
     }
-    //Reset global variable to create a cooldown period
-    timeLastMessageWasSent = now
+    //Reset global variable to create a cool down period
+    timeLastMessageWasSent = now;
 });
 
 // Connect To Twitch
@@ -78,7 +78,7 @@ const notificationVolumeSliderProgress = document.querySelector('.notification_v
 const notificationVolumeValue = document.querySelector('.notification_volume_slider_value');
 
 // Listen for user input of new channels.
-channelInputForm.addEventListener('submit', (event) => {
+channelInputForm.addEventListener('submit', async (event) => {
     // Prevent from reloading the page.
     event.preventDefault();
 
@@ -86,7 +86,7 @@ channelInputForm.addEventListener('submit', (event) => {
     const channelName = channelNameInput.value ? channelNameInput.value.trim().toLowerCase() : '';
 
     // Add channels to the page.
-    const callAddChannelToTMIClient = addChannelToDocument(channelName);
+    const callAddChannelToTMIClient = await addChannelToDocument(channelName);
     // If channels were added to page, then add channels to TMI client as well.
     if (callAddChannelToTMIClient) addChannelToTMIClient();
 });
@@ -94,7 +94,7 @@ channelInputForm.addEventListener('submit', (event) => {
 /*
  * Add the channel name from the input field to the channels list.
  */
-const addChannelToDocument = (channelName) => {
+const addChannelToDocument = async (channelName) => {
     // Stop if no channel name is given. Shouldn't be possible cause it requires a value to be submitted.
     if (!channelName) return;
 
@@ -140,6 +140,11 @@ const addChannelToDocument = (channelName) => {
  * Add channels to TMI Client channels list.
  */
 const addChannelToTMIClient = async () => {
+    // Disconnect TMI client.
+    await client.disconnect();
+
+    // Reset TMI client channel list.
+    client.channels.length = 0;
     // Empty channels array.
     channels.length = 0;
     // Add each channel name to channels array.
@@ -151,8 +156,7 @@ const addChannelToTMIClient = async () => {
         if (channel) channels.push(channel);
     });
 
-    // Disconnect and reconnect TMI client.
-    await client.disconnect();
+    // Reconnect TMI client.
     await client.connect();
 };
 
@@ -168,22 +172,26 @@ channelNotificationsList.addEventListener('click', (event) => {
 const removeChannelFromDocumentAndTMIClient = async (event) => {
     const channelName = event.target.previousElementSibling.innerText;
     event.target.previousElementSibling.innerText = '';
-
+    // Return if no channel names.
     if (!channelName) return;
 
-    const channels = [];
+    channels.length = 0;
     channelNames.forEach((channelElement) => {
         // Get channel name.
         const channel = channelElement.innerText;
-        channelElement.innerText = '';
 
         // If channel name exists, add them to the array.
-        if (channel) channels.push(channel);
+        if (channel && channel !== channelName) channels.push(channel);
+
+        channelElement.innerText = '';
     });
 
     channels.forEach((channel) => {
+        // Update DOM.
         addChannelToDocument(channel);
     });
+
+    // Add channels to TMI client.
     await addChannelToTMIClient();
 };
 
@@ -192,6 +200,7 @@ notificationSoundForm.addEventListener('submit', (event) => {
     // Prevent page from reloading.
     event.preventDefault();
 
+    // Add notification sound.
     addNotificationSound();
 });
 
@@ -204,12 +213,17 @@ notificationSoundInput.addEventListener('change', () => {
  * Add new notification sound.
  */
 const addNotificationSound = () => {
+    // Get notification sound from form element.
     const notificationSoundFile = notificationSoundInput.files[0];
+
+    // Exit if no file selected.
     if (!notificationSoundFile) return;
 
+    // Create new notification file url from the input.
     const notificationSoundFilePath = URL.createObjectURL(notificationSoundFile);
     const notificationSound = new Audio(notificationSoundFilePath);
 
+    // Set new notification sound and change background to give hint.
     notification = notificationSound;
     notificationSoundLabel.style.background = '#2ead07';
 };
