@@ -1,6 +1,0 @@
-# Hidden Files
-.*
-
-# GitHub
-!.github
-!.gitignore
