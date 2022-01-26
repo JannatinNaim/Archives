@@ -1,0 +1,97 @@
+/*
+    * ABOUT
+*/
+.about {
+    /* Horizontally center items with gaps in between. */
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    /* Gap between header and about section. */
+    margin-top: 4rem;
+}
+
+/* About section image width. */
+.about img {
+    width: 50%;
+}
+
+/* About section paragraph width. */
+.about p {
+    width: 40%;
+    line-height: 1.5;
+}
+
+/*
+    * CALL TO ACTION
+*/
+/* Gap between button and about section. */
+.call-to-action {
+    margin: 2rem 0;
+}
+
+/*
+    * SOCIAL LINKS
+*/
+.social-links {
+    /* Gap between social links and call to action button. */
+    margin-top: 6rem;
+
+    /* Set background color to light grey-ish. */
+    background-color: #e7e7e7;
+}
+
+/* Align items to center. */
+.social-links ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem 0;
+}
+
+/* Gap between links. */
+.social-links li {
+    margin: 0 2rem;
+}
+
+/*
+    * FOOTER
+*/
+#main-footer {
+    /* Centered text with gap on top and bottom. */
+    padding: 4rem;
+    text-align: center;
+}
+
+/* TABLET MEDIA QUERY */
+@media (max-width: 768px) {
+    /*
+        * ABOUT
+    */
+    .about {
+        /* Switch to column mode on small screens. */
+        flex-direction: column;
+    }
+
+    .about p {
+        /* Switch order of paragraph and increase margin and width. */
+        order: 1;
+        width: 100%;
+        margin-top: 4rem;
+    }
+
+    .about img {
+        /* Switch order of image and increase width. */
+        order: 0;
+        width: 100%;
+    }
+
+    /*
+        * CALL TO ACTION
+    */
+    /* Set width to 100% with margins on top. */
+    .call-to-action {
+        width: 100%;
+        margin-top: 4rem;
+    }
+}
