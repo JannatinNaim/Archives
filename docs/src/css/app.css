@@ -1,0 +1,284 @@
+/* * HERO SECTION */
+
+#hero_section .hero_banner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#hero_section .hero_banner img {
+    /* Center hero banner image. */
+    width: 100%;
+    max-width: 800px;
+    margin: 0.5rem 0;
+}
+
+/* * ADD CHANNEL SECTION */
+
+#add_channel_section {
+    /* Flex add channel section. */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#add_channel_section .add_channel_header {
+    /* Space out add channel header. */
+    margin: 1rem 0;
+}
+
+#add_channel_section .add_channel_name {
+    /* Style add channel input field. */
+    margin-bottom: 1rem;
+    padding: 1rem;
+    font-size: 24px;
+    min-width: 300px;
+    height: 48px;
+    display: block;
+    border-radius: 8px;
+}
+
+#add_channel_section .add_channel_name:focus {
+    /* Add focus effect for input field. */
+    outline: none;
+    border: 2px solid #d9381e;
+}
+
+#add_channel_section .add_channel_button {
+    /* Style add channel call to action button. */
+    margin: 0 auto;
+    width: 300px;
+    display: block;
+}
+
+/* * CHANNEL NOTIFICATIONS SECTION */
+
+#channel_notifications_section {
+    /* Space out notifications section. */
+    margin: 2rem 0;
+}
+
+#channel_notifications_section .channel_notifications_list {
+    /* Style listening to channels list container. */
+    position: relative;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 1rem;
+    background: rgb(245, 244, 244);
+    border-radius: 8px;
+    border: 1px solid #d9381e;
+    box-shadow: 0 4px #333;
+}
+
+#channel_notifications_section .channel_list {
+    /* Set individual channel list column width. */
+    width: 40%;
+}
+
+#channel_notifications_section .channel_notifications_banner_text_container {
+    /* Rotate 'Channels Listening To' text's parent. */
+    transform: rotate(-90deg);
+}
+
+#channel_notifications_section .channel_notifications_banner_text {
+    /* Position 'Channels Listening To' at the center. */
+    position: absolute;
+    overflow: visible;
+    white-space: nowrap;
+    font-size: 24px;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    opacity: 0.5;
+}
+
+@media (max-width: 375px) {
+    #channel_notifications_section .channel_notifications_banner_text {
+        font-size: 18px;
+    }
+}
+
+#channel_notifications_section .channel_notifications_channel {
+    /* Style each channel card. */
+    border-radius: 8px;
+    padding: 1rem;
+    margin: 1rem 0;
+    min-width: 250px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* font-weight: 700; */
+    letter-spacing: 1px;
+    box-shadow: 0 0 5px;
+}
+
+#channel_notifications_section .channel_notifications_channel .channel_name {
+    /* Style channel name. */
+    width: 80%;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    overflow: hidden;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    font-weight: 700;
+}
+
+#channel_notifications_section .channel_notifications_channel .iconify {
+    /* Space out the remove button from channel name. */
+    margin-left: 1rem;
+}
+
+#channel_notifications_section .channel_notifications_channel .iconify:hover {
+    /* Hover effect for remove button. */
+    cursor: pointer;
+}
+
+/* * CHANNEL NOTIFICATIONS SECTION TABLET VIEW */
+
+@media (max-width: 768px) {
+    #channel_notifications_section .channel_notifications_list {
+        /* On mobile set column layout. */
+        flex-direction: column;
+    }
+
+    #channel_notifications_section .channel_notifications_banner_text_container {
+        /* Switch order of listening to channels text. */
+        order: -1;
+        margin: 1rem 0;
+        transform: none;
+    }
+
+    #channel_notifications_section .channel_notifications_banner_text {
+        /* Restore position of listening to channels text. */
+        transform: none;
+        position: static;
+    }
+
+    #channel_notifications_section .channel_list {
+        /* Set channel cards to full width. */
+        width: 100%;
+    }
+
+    #channel_notifications_section .channel_notifications_channel:last-child {
+        /* Remove margin from the channel list container. */
+        margin-bottom: 0;
+    }
+}
+
+/* * NOTIFICATION SOUND SECTION */
+
+#notification_sound_section {
+    /* Space out notification sound section. */
+    margin: 4rem 0;
+}
+
+#notification_sound_section .notification_sound_section_header {
+    /* Center and space out header. */
+    margin: 2rem 0;
+    text-align: center;
+}
+
+#notification_sound_section .notification_sound_section_header .muted_text {
+    /* Make the optional text faded. */
+    opacity: 0.3;
+}
+
+#notification_sound_section .notification_sound_section_form {
+    /* Center form elements. */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+#notification_sound_section #notification_sound_file {
+    /* Hide input element. */
+    display: none;
+}
+
+#notification_sound_section .notification_sound_file_label {
+    /* Style sound file input label. */
+    background: #b7b7b7;
+    padding: 1rem 4rem;
+    min-width: 300px;
+    text-align: center;
+    cursor: pointer;
+    border-radius: 8px;
+    margin-bottom: 2rem;
+}
+
+/* * NOTIFICATION SOUND SECTION TABLE VIEW */
+@media (max-width: 768px) {
+    #notification_sound_section .notification_sound_section_form .notification_sound_file_label,
+    #notification_sound_section .notification_sound_section_form .notification_sound_add_button {
+        /* Call to action takes full width on smaller device. */
+        width: 100%;
+    }
+}
+
+.notification_volume_container {
+    padding: 25px;
+    margin-bottom: 2rem;
+    border: 1px solid red;
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.notification_volume_slider {
+    position: relative;
+    width: 300px;
+    height: 8px;
+}
+
+.notification_volume_slider input[type='range'] {
+    position: absolute;
+    left: -2px;
+    top: 0;
+    width: 304px;
+    height: 8px;
+    -webkit-appearance: none;
+    background: transparent;
+    z-index: 999;
+}
+
+.notification_volume_slider input::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 20px;
+    height: 20px;
+    background: #ffffff;
+    border: 2px solid red;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.notification_volume_slider input::-webkit-slider-thumb:hover {
+    transform: scale(1.1);
+}
+
+.notification_volume_slider progress {
+    width: 300px;
+    height: 8px;
+    -webkit-appearance: none;
+    position: absolute;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.notification_volume_slider progress::-webkit-progress-bar {
+    background: #f0f0f0;
+}
+
+.notification_volume_slider progress::-webkit-progress-value {
+    background: red;
+}
+
+.notification_volume_slider_value {
+    width: 28px;
+    height: 20px;
+    margin-left: 10px;
+    text-align: center;
+}
