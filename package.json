@@ -13,8 +13,8 @@
   ],
   "main": "src/main.js",
   "scripts": {
-    "start": "node ./src/main.js",
-    "dev": "./node_modules/.bin/nodemon ./src/main.js"
+    "start": "node -r dotenv/config ./src/main.js",
+    "dev": "./node_modules/.bin/nodemon -r dotenv/config ./src/main.js"
   },
   "repository": {
     "type": "git",
@@ -34,6 +34,7 @@
     "discord.js": "^13.6.0"
   },
   "devDependencies": {
+    "dotenv": "^16.0.0",
     "eslint": "^8.11.0",
     "eslint-config-google": "^0.14.0",
     "nodemon": "^2.0.15"
