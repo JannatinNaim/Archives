@@ -1,0 +1,41 @@
+{
+  "name": "victus",
+  "version": "0.0.0-dev-0.0.1",
+  "description": "Jannatin Naim's Discord application.",
+  "author": {
+    "name": "MD Jannatin Naim",
+    "email": "contact.jannatinnaim@gmail.com",
+    "url": "https://jannatinnaim.com/"
+  },
+  "keywords": [
+    "JannatinNaim",
+    "Victus"
+  ],
+  "main": "src/main.js",
+  "scripts": {
+    "start": "node ./src/main.js",
+    "dev": "./node_modules/.bin/nodemon ./src/main.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/JannatinNaim/Victus.git"
+  },
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/JannatinNaim/Victus/issues",
+    "email": "contact.jannatinnaim@gmail.com"
+  },
+  "homepage": "https://github.com/JannatinNaim/Victus#readme",
+  "readme": "./README.md",
+  "engines": {
+    "node": ">=16.6.0"
+  },
+  "dependencies": {
+    "discord.js": "^13.6.0"
+  },
+  "devDependencies": {
+    "eslint": "^8.11.0",
+    "eslint-config-google": "^0.14.0",
+    "nodemon": "^2.0.15"
+  }
+}

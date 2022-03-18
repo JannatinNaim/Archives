@@ -1,0 +1,9 @@
+# Hidden Files
+.*
+
+# Allowed Hidden Files
+!.gitignore
+!.eslintrc.json
+
+# Node Modules
+node_modules/
