@@ -1,4 +1,6 @@
 const {Client, Intents} = require('discord.js');
+const eventsHandler = require('./handlers/events.js');
+
 
 const discordClient = new Client({
   intents: [
@@ -24,6 +26,13 @@ const discordClient = new Client({
 const DISCORD_BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
 discordClient.login(DISCORD_BOT_TOKEN);
 
-discordClient.on('ready', function() {
-  console.log('Discord Client Ready!');
-});
+
+/**
+ * base
+ */
+async function main() {
+  await eventsHandler(discordClient);
+}
+
+
+main();
