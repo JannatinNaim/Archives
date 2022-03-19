@@ -1,12 +1,18 @@
 const moment = require('moment');
 
+const {
+  logTypeConfig,
+  logCategoryConfig,
+  processTypeConfig,
+} = require('../settings/logConfig.json');
+
 
 /**
- * Log function with categories and types.
- * @param {String} message Message to log.
- * @param {String} logType Type of log.
- * @param {String} processType Type of process.
- * @param {String} logCategory Type of category.
+ * Log output to console with categories, types, and processes.
+ * @param {String} message Message.
+ * @param {String} logType Type.
+ * @param {String} processType Process.
+ * @param {String} logCategory Category.
  */
 async function log(
     message,
@@ -15,26 +21,6 @@ async function log(
     logCategory = 'base',
 ) {
   const TIMESTAMP = moment().format('YYYY-MM-DD HH:mm:ss');
-
-  const logTypeConfig = {
-    info: {color: ''},
-    success: {color: 'green'},
-    warn: {color: 'yellow'},
-    error: {color: 'red'},
-    debug: {color: 'magenta'},
-  };
-
-  const logCategoryConfig = {
-    loadEvent: {color: 'cyan'},
-    event: {color: 'yellow'},
-    loadCommand: {color: 'magenta'},
-    command: {color: 'blue'},
-  };
-
-  const processTypeConfig= {
-    node: {color: 'green'},
-    discord: {color: 'blue'},
-  };
 
   const logTypeColor = logTypeConfig[logType]?.color || '';
   const processTypeColor = processTypeConfig[processType]?.color || '';

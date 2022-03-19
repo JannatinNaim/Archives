@@ -1,11 +1,15 @@
 const {oneLine} = require('common-tags/lib');
-const {Permissions} = require('discord.js');
+const {Permissions, Collection} = require('discord.js');
 const glob = require('glob');
+
 const hasObjectProperties = require('../functions/hasObjectProperties.js');
+const getFileNameAndCategory = require(
+    '../functions/getFileNameAndCategory.js',
+);
 
 
 /**
- * Commands Handler.
+ * Discord Client commands handler.
  * @param {Client} discordClient Discord Client.
  */
 async function commandsHandler(discordClient) {
@@ -15,7 +19,7 @@ async function commandsHandler(discordClient) {
 
 
 /**
- * Register commands.
+ * Discord Client commands registerer.
  * @param {Client} discordClient Discord Client.
  */
 async function registerCommands(discordClient) {
@@ -35,13 +39,9 @@ async function registerCommands(discordClient) {
 
     commands.push(command);
 
-    const commandFilePathArray = commandFilePath.split('/');
-    const commandFileName = commandFilePathArray[
-        commandFilePathArray.length - 1
-    ];
-    const commandFileCategory = commandFilePathArray[
-        commandFilePathArray.length - 2
-    ];
+    const [
+      commandFileName, commandFileCategory,
+    ] = getFileNameAndCategory(commandFilePath);
 
     log(
         `${commandFileCategory}/${commandFileName}`,
@@ -51,23 +51,28 @@ async function registerCommands(discordClient) {
     );
   });
 
+  discordClient.commands = new Collection();
 
   commands.forEach(function(command) {
     discordClient.commands.set(command.name, command);
   });
 
-  // await discordClient.application.commands.set([]);
-  // await discordClient.application.commands.set(commands);
+  const {DEBUG_MODE} = process.env;
 
-  discordClient.guilds.cache.forEach(async function(guild) {
-    await guild.commands.set([]);
-    await guild.commands.set(commands);
-  });
+  if (DEBUG_MODE) {
+    discordClient.guilds.cache.forEach(async function(guild) {
+      await guild.commands.set([]);
+      await guild.commands.set(commands);
+    });
+  } else {
+    // await discordClient.application.commands.set([]);
+    // await discordClient.application.commands.set(commands);
+  }
 }
 
 
 /**
- * Handle commands.
+ * Discord Client commands handler.
  * @param {Client} discordClient Discord Client.
  */
 async function handleCommands(discordClient) {
@@ -104,14 +109,9 @@ function validateCommandPermissions(requiredPermissions, commandFilePath) {
 
   requiredPermissions.forEach(function(permission) {
     if (!validUserPermissions.includes(permission)) {
-      const commandFilePathArray = commandFilePath.split('/');
-
-      const commandFileName = commandFilePathArray[
-          commandFilePathArray.length - 1
-      ];
-      const commandFileCategory = commandFilePathArray[
-          commandFilePathArray.length - 2
-      ];
+      const [
+        commandFileName, commandFileCategory,
+      ] = getFileNameAndCategory(commandFilePath);
 
       throw new Error(
           oneLine`

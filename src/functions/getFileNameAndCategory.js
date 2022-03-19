@@ -1,7 +1,7 @@
 /**
  * Get file name and category from file path.
  * @param {String} filePath File path.
- * @return {Array} Array of file name and category.
+ * @return {Array} File name and category.
  */
 function getFileNameAndCategory(filePath) {
   const filePathArray = filePath.split('/');

@@ -2,10 +2,10 @@ const {oneLine} = require('common-tags');
 
 
 /**
- * Validate
- * @param {Array} requiredProperties Array of required properties.
- * @param {Object} object Event object to check for required properties.
- * @param {String} objectFilePath Event file path.
+ * Validate required object properties.
+ * @param {Array} requiredProperties Required properties.
+ * @param {Object} object Object to check properties.
+ * @param {String} objectFilePath Object file path.
  */
 function hasObjectProperties(requiredProperties, object, objectFilePath) {
   const objectFilePathArray = objectFilePath.split('/');

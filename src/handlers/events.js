@@ -1,11 +1,15 @@
 const {oneLine} = require('common-tags/lib');
 const glob = require('glob');
+
 const hasObjectProperties = require('../functions/hasObjectProperties.js');
+const getFileNameAndCategory = require(
+    '../functions/getFileNameAndCategory.js',
+);
 
 
 /**
- * Events Handler.
- * @param {Client} discordClient Discord Client
+ * Handle Discord Client events.
+ * @param {Client} discordClient Discord Client.
  */
 async function eventsHandler(discordClient) {
   const eventFilePaths = glob.sync(process.cwd() + '/src/events/*/*.js');
@@ -16,7 +20,7 @@ async function eventsHandler(discordClient) {
     const requiredEventProperties = ['name', 'execute'];
     hasObjectProperties(requiredEventProperties, event, eventFilePath);
 
-    validEventName(event.name, eventFilePath);
+    validateEventName(event.name, eventFilePath);
 
     if (event.once) {
       discordClient.once(event.name, function(...args) {
@@ -28,9 +32,9 @@ async function eventsHandler(discordClient) {
       });
     }
 
-    const eventFilePathArray = eventFilePath.split('/');
-    const eventFileName = eventFilePathArray[eventFilePathArray.length - 1];
-    const eventFileCategory = eventFilePathArray[eventFilePathArray.length - 2];
+    const [
+      eventFileName, eventFileCategory,
+    ] = getFileNameAndCategory(eventFilePath);
 
     log(
         `${eventFileCategory}/${eventFileName}`,
@@ -43,11 +47,11 @@ async function eventsHandler(discordClient) {
 
 
 /**
- * Validates an event name.
- * @param {String} eventName Event name to validate.
+ * Validate Discord Client event name.
+ * @param {String} eventName Event name.
  * @param {String} eventFilePath Event file path.
  */
-function validEventName(eventName, eventFilePath) {
+function validateEventName(eventName, eventFilePath) {
   const validEventNames = [
     'apiRequest',
     'apiResponse',
@@ -126,10 +130,9 @@ function validEventName(eventName, eventFilePath) {
   ];
 
   if (!validEventNames.includes(eventName)) {
-    const eventFilePathArray = eventFilePath.split('/');
-
-    const eventFileName = eventFilePathArray[eventFilePathArray.length - 1];
-    const eventFileCategory = eventFilePathArray[eventFilePathArray.length - 2];
+    const [
+      eventFileName, eventFileCategory,
+    ] = getFileNameAndCategory(eventFilePath);
 
     throw new Error(
         oneLine`

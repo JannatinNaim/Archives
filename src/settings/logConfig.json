@@ -1,0 +1,19 @@
+{
+  "logTypeConfig ": {
+    "info": { "color": "" },
+    "success": { "color": "green" },
+    "warn": { "color": "yellow" },
+    "error": { "color": "red" },
+    "debug": { "color": "magenta" }
+  },
+  "logCategoryConfig ": {
+    "loadEvent": { "color": "cyan" },
+    "event": { "color": "yellow" },
+    "loadCommand": { "color": "magenta" },
+    "command": { "color": "blue" }
+  },
+  "processTypeConfig ": {
+    "node": { "color": "green" },
+    "discord": { "color": "blue" }
+  }
+}
