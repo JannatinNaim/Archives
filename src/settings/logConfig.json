@@ -1,5 +1,5 @@
 {
-  "logTypeConfig ": {
+  "logTypeConfig": {
     "info": { "color": "" },
     "success": { "color": "green" },
     "warn": { "color": "yellow" },
