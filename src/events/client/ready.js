@@ -2,7 +2,7 @@ const event = {
   name: 'ready',
   once: true,
   execute() {
-    console.log('Discord Client is ready!');
+    log('Discord Client is ready!', 'success', 'discord', 'event');
   },
 };
 

@@ -25,6 +25,7 @@ async function log(
   };
 
   const logCategoryConfig = {
+    loadEvent: {color: 'cyan'},
     event: {color: 'yellow'},
   };
 

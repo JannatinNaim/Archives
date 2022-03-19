@@ -32,7 +32,12 @@ async function eventsHandler(discordClient) {
     const eventFileName = eventFilePathArray[eventFilePathArray.length - 1];
     const eventFileCategory = eventFilePathArray[eventFilePathArray.length - 2];
 
-    console.log(`EVENT LOADED: ${eventFileCategory}/${eventFileName}`);
+    log(
+        `${eventFileCategory}/${eventFileName}`,
+        'success',
+        'discord',
+        'loadEvent',
+    );
   });
 }
 

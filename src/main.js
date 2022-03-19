@@ -1,3 +1,5 @@
+global.log = require('./functions/log.js');
+
 const {Client, Intents} = require('discord.js');
 const eventsHandler = require('./handlers/events.js');
 
