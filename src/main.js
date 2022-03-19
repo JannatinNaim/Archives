@@ -1,7 +1,8 @@
 global.log = require('./functions/log.js');
 
-const {Client, Intents} = require('discord.js');
+const {Client, Intents, Collection} = require('discord.js');
 const eventsHandler = require('./handlers/events.js');
+const commandsHandler = require('./handlers/commands.js');
 
 
 const discordClient = new Client({
@@ -25,16 +26,18 @@ const discordClient = new Client({
   ],
 });
 
+discordClient.commands = new Collection();
+
 const DISCORD_BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
-discordClient.login(DISCORD_BOT_TOKEN);
+discordClient.login(DISCORD_BOT_TOKEN).then(function() {
+  main();
+});
 
 
 /**
  * base
  */
 async function main() {
-  await eventsHandler(discordClient);
+  eventsHandler(discordClient);
+  commandsHandler(discordClient);
 }
-
-
-main();

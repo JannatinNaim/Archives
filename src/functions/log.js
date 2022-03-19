@@ -27,6 +27,8 @@ async function log(
   const logCategoryConfig = {
     loadEvent: {color: 'cyan'},
     event: {color: 'yellow'},
+    loadCommand: {color: 'magenta'},
+    command: {color: 'blue'},
   };
 
   const processTypeConfig= {
