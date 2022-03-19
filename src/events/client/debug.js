@@ -8,7 +8,7 @@ const event = {
    * @param {String} message Debug message.
    */
   execute(message) {
-    if (DEBUG_MODE) log(message, 'debug', 'discord', 'event');
+    if (DEBUG_MODE) log(message, 'debug', 'discord', 'base');
   },
 };
 

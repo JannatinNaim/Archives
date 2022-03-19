@@ -28,8 +28,15 @@ const discordClient = new Client({
 
 discordClient.commands = new Collection();
 
-const DISCORD_BOT_TOKEN = process.env.DISCORD_BOT_TOKEN;
-discordClient.login(DISCORD_BOT_TOKEN).then(function() {
+const {
+  DISCORD_BOT_TOKEN,
+  DEVELOPMENT_DISCORD_BOT_TOKEN,
+  DEBUG_MODE,
+} = process.env;
+
+const TOKEN = DEBUG_MODE ? DEVELOPMENT_DISCORD_BOT_TOKEN : DISCORD_BOT_TOKEN;
+
+discordClient.login(TOKEN).then(function() {
   main();
 });
 
