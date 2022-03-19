@@ -12,30 +12,51 @@ const getFileNameAndCategory = require(
  * @param {Client} discordClient Discord Client.
  */
 async function eventsHandler(discordClient) {
+  // Array of event file paths.
   const eventFilePaths = glob.sync(process.cwd() + '/src/events/*/*.js');
 
   eventFilePaths.forEach(function(eventFilePath) {
+    // Require each event.
     const event = require(eventFilePath);
 
+    // Required event properties.
     const requiredEventProperties = ['name', 'execute'];
+    // Validate if event has all required event properties.
     hasObjectProperties(requiredEventProperties, event, eventFilePath);
 
+    // Validate if event name is available in Discord Client.
     validateEventName(event.name, eventFilePath);
 
+
+    // Switch between always running events and only once ran events.
     if (event.once) {
-      discordClient.once(event.name, function(...args) {
-        event.execute(...args, discordClient);
+      discordClient.once(event.name, async function(...args) {
+        try {
+          // Execute event.
+          await event.execute(...args, discordClient);
+        } catch (error) {
+          // Report on event error.
+          log(error, 'error', 'discord', 'event' );
+        }
       });
     } else {
-      discordClient.on(event.name, function(...args) {
-        event.execute(...args, discordClient);
+      discordClient.on(event.name, async function(...args) {
+        try {
+          // Execute event.
+          await event.execute(...args, discordClient);
+        } catch (error) {
+          // Report on event error.
+          log(error, 'error', 'discord', 'event');
+        }
       });
     }
 
+    // Event file name and category.
     const [
       eventFileName, eventFileCategory,
     ] = getFileNameAndCategory(eventFilePath);
 
+    // Report on loaded events.
     log(
         `${eventFileCategory}/${eventFileName}`,
         'success',
@@ -52,6 +73,7 @@ async function eventsHandler(discordClient) {
  * @param {String} eventFilePath Event file path.
  */
 function validateEventName(eventName, eventFilePath) {
+  // All valid Discord Client event names.
   const validEventNames = [
     'apiRequest',
     'apiResponse',
@@ -129,7 +151,9 @@ function validateEventName(eventName, eventFilePath) {
     'webhookUpdate',
   ];
 
+  // If event name is invalid, throw error.
   if (!validEventNames.includes(eventName)) {
+    // Get event file name and category.
     const [
       eventFileName, eventFileCategory,
     ] = getFileNameAndCategory(eventFilePath);

@@ -5,6 +5,7 @@ const event = {
    * @param {String} message Warn message.
    */
   execute(message) {
+    // Report on warn.
     log(message, 'warn', 'discord', 'event');
   },
 };

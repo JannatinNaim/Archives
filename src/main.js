@@ -6,6 +6,7 @@ const eventsHandler = require('./handlers/events.js');
 const commandsHandler = require('./handlers/commands.js');
 
 
+// Initialize Discord Client.
 const discordClient = new Client({
   intents: [
     Intents.FLAGS.DIRECT_MESSAGES,
@@ -38,11 +39,16 @@ async function main() {
     DEBUG_MODE,
   } = process.env;
 
+  // Switch between development and production clients.
   const TOKEN = DEBUG_MODE ? DEVELOPMENT_DISCORD_BOT_TOKEN : DISCORD_BOT_TOKEN;
   await discordClient.login(TOKEN);
 
+  // Handle Discord Client events.
   eventsHandler(discordClient);
+
+  // Handle Discord Client functions.
   commandsHandler(discordClient);
 }
 
+// START
 main();

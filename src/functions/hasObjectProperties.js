@@ -1,5 +1,7 @@
 const {oneLine} = require('common-tags');
 
+const getFileNameAndCategory = require('./getFileNameAndCategory');
+
 
 /**
  * Validate required object properties.
@@ -8,17 +10,15 @@ const {oneLine} = require('common-tags');
  * @param {String} objectFilePath Object file path.
  */
 function hasObjectProperties(requiredProperties, object, objectFilePath) {
-  const objectFilePathArray = objectFilePath.split('/');
-
   requiredProperties.forEach(function(property) {
+    // If object doesn't have required properties, throw error.
     if (!Object.keys(object).includes(property)) {
-      const objectFileName = objectFilePathArray[
-          objectFilePathArray.length - 1
-      ];
-      const objectFileCategory = objectFilePathArray[
-          objectFilePathArray.length - 2
-      ];
+      // Get object file name and category.
+      const [
+        objectFileName, objectFileCategory,
+      ] = getFileNameAndCategory(objectFilePath);
 
+      // Report on invalid object properties.
       throw new Error(
           oneLine`
           INVALID PROPERTIES:

@@ -1,7 +1,12 @@
 const command = {
   name: 'ping',
   description: 'Ping!',
-  execute(interaction, discordClient) {
+  /**
+   * Jobs on ping command execution.
+   * @param {Interaction} interaction Discord Client interaction.
+   */
+  execute(interaction) {
+    // Reply to command.
     interaction.reply('Pong!');
   },
 };
