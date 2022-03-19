@@ -10,7 +10,7 @@ const {oneLine} = require('common-tags');
 function hasObjectProperties(requiredProperties, object, objectFilePath) {
   const objectFilePathArray = objectFilePath.split('/');
 
-  requiredProperties.forEach((property) => {
+  requiredProperties.forEach(function(property) {
     if (!Object.keys(object).includes(property)) {
       const objectFileName = objectFilePathArray[
           objectFilePathArray.length - 1

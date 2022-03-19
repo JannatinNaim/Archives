@@ -10,7 +10,7 @@ const hasObjectProperties = require('../functions/hasObjectProperties.js');
 async function eventsHandler(discordClient) {
   const eventFilePaths = glob.sync(process.cwd() + '/src/events/*/*.js');
 
-  eventFilePaths.forEach((eventFilePath) => {
+  eventFilePaths.forEach(function(eventFilePath) {
     const event = require(eventFilePath);
 
     const requiredEventProperties = ['name', 'execute'];
