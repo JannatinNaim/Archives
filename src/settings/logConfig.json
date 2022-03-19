@@ -6,13 +6,13 @@
     "error": { "color": "red" },
     "debug": { "color": "magenta" }
   },
-  "logCategoryConfig ": {
+  "logCategoryConfig": {
     "loadEvent": { "color": "cyan" },
     "event": { "color": "yellow" },
     "loadCommand": { "color": "magenta" },
     "command": { "color": "blue" }
   },
-  "processTypeConfig ": {
+  "processTypeConfig": {
     "node": { "color": "green" },
     "discord": { "color": "blue" }
   }
