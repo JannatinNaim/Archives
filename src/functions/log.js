@@ -14,7 +14,7 @@ const {
  * @param {String} processType Process.
  * @param {String} logCategory Category.
  */
-async function log(
+function log(
     message,
     logType = 'info',
     processType = 'general',

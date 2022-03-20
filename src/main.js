@@ -51,4 +51,6 @@ async function main() {
 }
 
 // START
-main();
+main().then(function() {
+  log('Victus Launched.', 'success', 'node', 'basic');
+});

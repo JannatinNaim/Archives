@@ -11,7 +11,7 @@ const getFileNameAndCategory = require(
  * Handle Discord Client events.
  * @param {Client} discordClient Discord Client.
  */
-async function eventsHandler(discordClient) {
+function eventsHandler(discordClient) {
   // Array of event file paths.
   const eventFilePaths = glob.sync(process.cwd() + '/src/events/*/*.js');
 

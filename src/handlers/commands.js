@@ -12,7 +12,7 @@ const getFileNameAndCategory = require(
  * Discord Client commands handler.
  * @param {Client} discordClient Discord Client.
  */
-async function commandsHandler(discordClient) {
+function commandsHandler(discordClient) {
   // Register Discord Client commands.
   registerCommands(discordClient);
 
@@ -25,7 +25,7 @@ async function commandsHandler(discordClient) {
  * Discord Client commands registerer.
  * @param {Client} discordClient Discord Client.
  */
-async function registerCommands(discordClient) {
+function registerCommands(discordClient) {
   // Array of command file paths.
   const commandFilePaths = glob.sync(process.cwd() + '/src/commands/*/*.js');
 
@@ -92,7 +92,7 @@ async function registerCommands(discordClient) {
  * Discord Client commands handler.
  * @param {Client} discordClient Discord Client.
  */
-async function handleCommands(discordClient) {
+function handleCommands(discordClient) {
   discordClient.on('interactionCreate', async function(interaction) {
     // Return if interaction is not a command.
     if (!interaction.isCommand()) return;
