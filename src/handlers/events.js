@@ -1,10 +1,10 @@
 const {oneLine} = require('common-tags/lib');
 const glob = require('glob');
 
-const hasObjectProperties = require('../functions/hasObjectProperties.js');
-const getFileNameAndCategory = require(
-    '../functions/getFileNameAndCategory.js',
-);
+const {
+  getFileNameAndCategory,
+  hasObjectProperties,
+} = require('../functions/utilities.js');
 
 
 /**
