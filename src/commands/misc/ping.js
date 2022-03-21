@@ -7,7 +7,7 @@ const command = {
    */
   execute(interaction) {
     // Reply to command.
-    interaction.reply('Pong!');
+    interaction['reply']('Pong!');
   },
 };
 

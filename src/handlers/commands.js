@@ -41,9 +41,11 @@ function registerCommands(discordClient) {
     hasObjectProperties(requiredCommandProperties, command, commandFilePath);
 
     // Validate if command permissions are available Discord permissions.
-    if (command.requiredPermissions) {
-      validateCommandPermissions(command.requiredPermissions, commandFilePath);
-    };
+    if (command['requiredPermissions']) {
+      validateCommandPermissions(
+          command['requiredPermissions'], commandFilePath,
+      );
+    }
 
     // Set command to be registered.
     commands.push(command);
@@ -63,11 +65,11 @@ function registerCommands(discordClient) {
   });
 
   // Collection of registered commands.
-  discordClient.commands = new Collection();
+  discordClient['commands'] = new Collection();
 
   commands.forEach(function(command) {
     // Register command to collection with access key as the command name.
-    discordClient.commands.set(command.name, command);
+    discordClient['commands'].set(command.name, command);
   });
 
   const {DEBUG_MODE} = process.env;
@@ -97,7 +99,7 @@ function handleCommands(discordClient) {
     if (!interaction.isCommand()) return;
 
     // Retrieve command from available commands.
-    const command = discordClient.commands.get(interaction.commandName);
+    const command = discordClient['commands'].get(interaction['commandName']);
     // Return if command is not available.
     if (!command) return;
 
@@ -119,7 +121,7 @@ function handleCommands(discordClient) {
       await command.execute(interaction, discordClient);
     } catch (e) {
       // Report on command error.
-      log(error, 'error', 'discord', 'command');
+      log(e, 'error', 'discord', 'command');
     }
   });
 }

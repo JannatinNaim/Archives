@@ -50,7 +50,7 @@ function log(
       `[${logCategory}]`,
       message,
   );
-};
+}
 
 
 module.exports = log;
